@@ -1,30 +1,24 @@
 // fetch ('https://www.mediawiki.org/wiki/Special:MyLanguage/API:Query')
 
-// // // // // // // // // // //
-// Alex's Lyric API Codework //
-// var artistName = "Coldplay";
-// var songName = "Adventure of a Lifetime";
-// var requestURL = 'https://api.lyrics.ovh/v1/' + artistName + '/' + songName;
+// Last.fm artist.getInfo format
+var apiKeyCode = "22ab40738b7e4b7cc147c18a2e2cd8ab";
+var artistName = "";
+var requestURL = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + artistName + '&api_key=' + apiKeyCode + '&format=json';
 
-// fetch(requestURL)
-//     .then(function (response) {
-//         return response.json();
-//     })
-//     .then(function (data) {
-//         console.log(data);
-//     });
-var request = new XMLHttpRequest();
+// Not used anywhere for now
+var songName = "";
 
-request.open('GET', 'https://api.lyrics.ovh/v1/Coldplay/Adventure of a Lifetime');
+// Example of a successful fetch input; artist name is Cher
+fetch('http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=Cher&api_key=22ab40738b7e4b7cc147c18a2e2cd8ab&format=json')
+    .then(function (response) {
+        // Console log of what response does; format=json allows us to utilize .json(), to view the data in a json format.
+        // console.log(response);
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
 
-request.onreadystatechange = function () {
-  if (this.readyState === 4) {
-    console.log('Status:', this.status);
-    console.log('Headers:', this.getAllResponseHeaders());
-    console.log('Body:', this.responseText);
-  }
-};
+    });
 
-request.send();
-// End Of Alex's Lyric API Codework //
-// // // // // // // // // // // // //
+// URL link without search query
+//http://ws.audioscrobbler.com/2.0
