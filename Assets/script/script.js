@@ -1,0 +1,1 @@
+fetch ('https://www.mediawiki.org/wiki/Special:MyLanguage/API:Query')
