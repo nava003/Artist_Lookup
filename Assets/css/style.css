@@ -2,7 +2,7 @@
 font-family: 'Quicksand', sans-serif;
 }
 
-.searchButton {
+.search.searchButton {
     background-color:#5982F3;
     color: #fff;
     padding: 2px 30px;
@@ -13,7 +13,6 @@ font-family: 'Quicksand', sans-serif;
     font-weight: lighter;
     margin: 10px 30%;
 }
-
 
 
 .searchButton:hover {
