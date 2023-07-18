@@ -24,6 +24,7 @@ fetch(requestArtistURL)
         }
     })
     .catch(function (error) {
+        // console.log(error);
         // "Unable to connect to Last.fm"
         // Place error message inside a msg container/div/element
     })
@@ -43,11 +44,12 @@ function displayArtistInfo(info, artName) {
 
     var bioContent = info.artist.bio.content;
     //console.log(bioContent.split("\n"));
-    var newContent = bioContent.replaceAll("\n", "<br>");
+    var fixedBio = bioContent.replaceAll("\n", "<br>");
+
     var bioContainer = document.createElement('div');
     bioContainer.setAttribute('id', "bioContainer");
     bioContainer.setAttribute('style', "border:2px solid black");
-    bioContainer.innerHTML = newContent;
+    bioContainer.innerHTML = fixedBio;
     artistSection.append(bioContainer);
 
 
