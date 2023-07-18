@@ -1,3 +1,27 @@
 * {
 font-family: 'Quicksand', sans-serif;
 }
+
+.search.searchButton {
+    background-color:#5982F3;
+    color: #fff;
+    padding: 2px 30px;
+    border-radius: 100px;
+    box-shadow: 0px 2px #e6f0f2;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: lighter;
+    margin: 10px 30%;
+}
+
+
+.searchButton:hover {
+    opacity: 90%;
+}
+
+
+.searchBar {
+    border: 1px solid #5982F3;
+    padding: 2px 5px;
+    min-width: 100%;
+}
