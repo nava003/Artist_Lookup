@@ -32,12 +32,64 @@ function performSearch() {
 
 // fetch ('https://www.mediawiki.org/wiki/Special:MyLanguage/API:Query')
 
-// Last.fm artist.getInfo format
+// // // // // // // // // // // // // // // // // // // // // // // //
+// ================ Alex's Last.fm Codework Below ================= //
+var artistHeader = document.querySelector('#artistHeader');
+var artistInfo = document.querySelector('#artistInfo');
+
+// Last.fm default variables
+var lastFmURL = "http://ws.audioscrobbler.com/2.0";
 var apiKeyCode = "22ab40738b7e4b7cc147c18a2e2cd8ab";
 var artistName = "Cher";
-var requestArtistURL = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + artistName + '&api_key=' + apiKeyCode + '&format=json';
 
-fetch(requestArtistURL)
+// Last.fm artist.getTopAlbums format
+var requestArtAlbURL = lastFmURL + '/?method=artist.gettopalbums&artist=' + artistName + '&api_key=' + apiKeyCode + '&format=json';
+
+fetch(requestArtAlbURL)
+    .then(function (response) {
+        if (response.ok) {
+            // console.log(response) // temp console log
+            response.json()
+            .then(function (data) {
+                //console.log(data) // temp console log
+                
+                displayTopAlbums(data, artistName);
+            });
+        } else {
+            // console.log("Error: " + response.statusText);
+            // "Error: " + response.statusText
+            // Place status error inside a msg container/div/element
+        }
+    })
+    .catch(function (error) {
+        // console.log(error);
+        // "Unable to connect to Last.fm"
+        // Place error message inside a msg container/div/element
+    })
+;
+
+function displayTopAlbums(info, artName) {
+    if (info.topalbums === null) {
+        // "No Artist was found. Try again."
+        // Place message inside a container/div/element
+        return;
+    }
+
+    //var artistHeader = document.querySelector('#artistHeader');
+    artistHeader.textContent = artName;
+
+    var albumList = document.querySelector('#albumList');
+    var largeImgNum = 3;
+    for(var i = 0; i < info.topalbums.album.length; i++) {
+        var albumIcon = document.createElement('img');
+
+    }
+}
+
+// Last.fm artist.getInfo format
+var requestArtInfoURL = lastFmURL + '/?method=artist.getinfo&artist=' + artistName + '&api_key=' + apiKeyCode + '&format=json';
+
+fetch(requestArtInfoURL)
     .then(function (response) {
         if (response.ok) {
             // console.log(response) // temp console log
@@ -67,40 +119,16 @@ function displayArtistInfo(info, artName) {
         // Place message inside a container/div/element
         return;
     }
-    var artistHeader = document.querySelector('#artistHeader');
+
     artistHeader.textContent = artName;
 
     var bioContent = info.artist.bio.content;
     //console.log(bioContent.split("\n"));
     var fixedBio = bioContent.replaceAll("\n", "<br>");
 
-    var regSpcExp = / /;
-    var bioContainer = document.createElement('div');
-    bioContainer.setAttribute('id', "bioContainer");
-    bioContainer.setAttribute('style', "border:2px solid black");
-    bioContainer.innerHTML = fixedBio;
+    var regSpcExp = /\s/;
 
-    artistSection.append(bioContainer);
+    artistInfo.innerHTML = fixedBio;
 
 
 }
-
-//// Below is basic example of artist.getInfo method ////
-//// This will be removed as the project progresses  ////
-// Example of a successful fetch input; artist name is Cher
-// fetch('http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=Cher&api_key=22ab40738b7e4b7cc147c18a2e2cd8ab&format=json')
-//     .then(function (response) {
-//         // Console log of what response does; format=json allows us to utilize .json(), to view the data in a json format.
-//         // console.log(response);
-//         return response.json();
-//     })
-//     .then(function (data) {
-//         console.log(data);
-
-//     }
-// );
-
-// Not used anywhere for now
-// var songName = "";
-// URL link without search query
-//http://ws.audioscrobbler.com/2.0
