@@ -3,6 +3,7 @@
 var searchInput = document.getElementById('search-input');
 // Assuming we will add a search button later :)
 var searchButton = document.getElementById('search-button');
+<<<<<<< HEAD
 var searchHistory = document.getElementById("searchHistoryField");
 var searchField = document.getElementById('searchField');
 
@@ -32,8 +33,38 @@ var artistName;
 //       console.log('Error:', error);
 //     }));
 // }
+=======
+// Function to perform the search
+function performSearch() {
+// Get the search query from the input text box
+  var searchQuery = 'Blink 182';
+
+// Calls the API to request to search for the artist and returns the data and function response in json
+  fetch
+    .then(function (response) {
+        console.log (response)
+        return response.json;
+    })
+    .then(data =>  {
+        console.log (data)
+//Gets the artist's information from the Wikipedia API and displays the Wikipedia article that corresponds to it on the application 
+    //   var pages = data.query.pages;
+    //   var pageIds = Object.keys(pages);
+    //   var pageId = pageIds[0];
+    //   var artist = pages[pageId];
+    //   var artistSummary = artist.extract;
+    //   var summaryContainer = document.getElementById('artist-summary');
+    //   summaryContainer.textContent = artistSummary;
+     })
+    .then(error => {
+// Console will return any errors that happen when calling the API 
+      console.log('Error:', error);
+    });
+  }
+>>>>>>> 970a349 (wikipedia debug)
 
 // fetch ('https://www.mediawiki.org/wiki/Special:MyLanguage/API:Query')
+performSearch();
 
 // // // // // // // // // // // // // // // // // // // // // // // //
 // ================ Alex's Last.fm Codework Below ================= //
