@@ -32,9 +32,6 @@ function performSearch() {
 
 // fetch ('https://www.mediawiki.org/wiki/Special:MyLanguage/API:Query')
 
-// Query Selectors
-var artistSection = document.querySelector('#artistInfo');
-
 // Last.fm artist.getInfo format
 var apiKeyCode = "22ab40738b7e4b7cc147c18a2e2cd8ab";
 var artistName = "Cher";
@@ -46,7 +43,7 @@ fetch(requestArtistURL)
             // console.log(response) // temp console log
             response.json()
             .then(function (data) {
-                console.log(data) // temp console log
+                //console.log(data.artist.bio.content) // temp console log
                 
                 displayArtistInfo(data, artistName);
             });
@@ -70,16 +67,14 @@ function displayArtistInfo(info, artName) {
         // Place message inside a container/div/element
         return;
     }
-
-    var artHeaderEl = document.createElement('h2');
-    artHeaderEl.textContent = artName;
-    artistSection.append(artHeaderEl);
+    var artistHeader = document.querySelector('#artistHeader');
+    artistHeader.textContent = artName;
 
     var bioContent = info.artist.bio.content;
     //console.log(bioContent.split("\n"));
     var fixedBio = bioContent.replaceAll("\n", "<br>");
 
-    var regSpcExp = /\s/;
+    var regSpcExp = / /;
     var bioContainer = document.createElement('div');
     bioContainer.setAttribute('id', "bioContainer");
     bioContainer.setAttribute('style', "border:2px solid black");
