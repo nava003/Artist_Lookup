@@ -46,11 +46,12 @@ fetch(requestArtistURL)
             // console.log(response) // temp console log
             response.json()
             .then(function (data) {
-                //console.log(data.artist.bio.content) // temp console log
+                console.log(data) // temp console log
                 
                 displayArtistInfo(data, artistName);
             });
         } else {
+            // console.log("Error: " + response.statusText);
             // "Error: " + response.statusText
             // Place status error inside a msg container/div/element
         }
@@ -78,10 +79,12 @@ function displayArtistInfo(info, artName) {
     //console.log(bioContent.split("\n"));
     var fixedBio = bioContent.replaceAll("\n", "<br>");
 
+    var regSpcExp = /\s/;
     var bioContainer = document.createElement('div');
     bioContainer.setAttribute('id', "bioContainer");
     bioContainer.setAttribute('style', "border:2px solid black");
     bioContainer.innerHTML = fixedBio;
+
     artistSection.append(bioContainer);
 
 
