@@ -13,26 +13,35 @@
 </head>
 
 <body>
-  <header class="mb-8 bg-slate-400">
+  <header class="override mb-8 bg-slate-400">
     <h1>Music Application</h1>
   </header>
   <div class="flex flex-row justify-center">
     <div class="basis-3/5">
-      <div class="grid gap-x-6 grid-cols-3 flex justify-center">
+      <div class="flex flex-row justify-center">
         <!-- search area -->
-        <section class="grid justify-items-stretch">
-          <div class="justify-self-center">
-            <input class="searchBar" type="text" id="searchField"
+        <section class="basis-1/5 justify-items-stretch">
+          <div class="flex flex-row flex-wrap justify-center">
+            <input class="searchBar mb-4" type="text" id="searchField"
               name="search" placeholder="Artist Search">
             <button class="search searchButton" type="button">Search</button>
           </div>
+          <div class="mt-10" id="searchHistoryField">
+            <div class="searchHistory">Joy Division</div>
+            <div class="searchHistory">The Rolling Stones</div>
+            <div class="searchHistory">Nirvana</div>
+            <div class="searchHistory">AC/DC</div>
+          </div>
         </section>
         <!-- artist info -->
-        <section id="artistInfo">
-          <div id="artistInfo">Info</div>
+        <section class="override basis-2/5 px-10">
+          <h2>Cher</h2>
+          <div id="artistInfo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt harum fuga totam atque, reiciendis laudantium eum facere saepe velit earum id dolorem nesciunt deserunt dolore aut quod blanditiis, numquam voluptates ratione recusandae inventore iste. Iste corrupti, sunt reprehenderit accusantium sed molestiae laborum. Facere fuga aut animi officiis, ea a recusandae.</div>
         </section>
         <!-- wikipedia info -->
-        <section><div id="wikipediaInfo">Info</div></section>
+        <section class="override basis-2/5 px-10">
+          <h2>Wikipedia</h2>
+          <div id="wikipediaInfo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, dignissimos vitae. Tempora quia architecto, assumenda possimus culpa quos veniam. Sit, tempora consequatur atque doloribus alias error ipsa recusandae sequi adipisci cumque beatae voluptatum, aspernatur expedita amet obcaecati suscipit enim eos, facilis exercitationem quasi dolore. Corporis iusto ullam cumque rem? Id.</div></section>
       </div>
     </div>
   </div>

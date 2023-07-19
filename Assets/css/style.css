@@ -11,7 +11,7 @@ font-family: 'Quicksand', sans-serif;
     box-sizing: border-box;
     text-align: center;
     font-weight: lighter;
-    margin: 10px 30%;
+    /* margin: 10px 30%; */
 }
 
 .searchButton:hover {
@@ -23,4 +23,22 @@ font-family: 'Quicksand', sans-serif;
     border: 1px solid #5982F3;
     padding: 2px 5px;
     min-width: 100%;
+}
+
+.searchHistory {
+    color: black;
+    background-color: #ADADAD;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 15px;
+
+}
+.override h1 {
+    font-size: 32pt;
+    font-weight: 400;
+}
+.override h2 {
+    font-size: 26pt;
+    font-weight: bold;
+
 }
