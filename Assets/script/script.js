@@ -40,21 +40,13 @@ function performSearch() {
   var searchQuery = 'Blink 182';
 
 // Calls the API to request to search for the artist and returns the data and function response in json
-  fetch
+  fetch('https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=cher&key=${encodeURIComponent(query)[AIzaSyCFT6zfESewvzF3Uwa0NJS8YzU2Yltwirsgi]')
     .then(function (response) {
         console.log (response)
         return response.json;
     })
     .then(data =>  {
         console.log (data)
-//Gets the artist's information from the Wikipedia API and displays the Wikipedia article that corresponds to it on the application 
-    //   var pages = data.query.pages;
-    //   var pageIds = Object.keys(pages);
-    //   var pageId = pageIds[0];
-    //   var artist = pages[pageId];
-    //   var artistSummary = artist.extract;
-    //   var summaryContainer = document.getElementById('artist-summary');
-    //   summaryContainer.textContent = artistSummary;
      })
     .then(error => {
 // Console will return any errors that happen when calling the API 
