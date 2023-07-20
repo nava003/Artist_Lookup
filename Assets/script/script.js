@@ -3,13 +3,15 @@
 var searchInput = document.getElementById('search-input');
 // Assuming we will add a search button later :)
 var searchButton = document.getElementById('search-button');
-gittion to perform the search
+var artistHeader = document.querySelector('#artistHeader');
+var artistInfo = document.querySelector('#artistInfo');
+
 function performSearch() {
 // Get the search query from the input text box
   var searchQuery = 'Blink 182';
 
 // Calls the API to request to search for the artist and returns the data and function response in json
-  fetch('https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=cher&key=${encodeURIComponent(query)[AIzaSyCFT6zfESewvzF3Uwa0NJS8YzU2Yltwirsgi]'`mode:no-cors)
+  fetch('https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=cher&key=${encodeURIComponent(query)[AIzaSyCFT6zfESewvzF3Uwa0NJS8YzU2Yltwirsgi]',{mode:no-cors})
     .then(function (response) {
         console.log (response)
         return response.json;
@@ -23,13 +25,8 @@ function performSearch() {
     });
   }
 
-// fetch ('https://www.mediawiki.org/wiki/Special:MyLanguage/API:Query')
-performSearch();
-
 // // // // // // // // // // // // // // // // // // // // // // // //
 // ================ Alex's Last.fm Codework Below ================= //
-var artistHeader = document.querySelector('#artistHeader');
-var artistInfo = document.querySelector('#artistInfo');
 
 // Last.fm default variables
 var lastFmURL = "http://ws.audioscrobbler.com/2.0";
