@@ -78,7 +78,6 @@ function displayTopAlbums(info, artName) {
         return;
     }
 
-    //var artistHeader = document.querySelector('#artistHeader');
     artistHeader.textContent = artName;
 
     var albumList = document.querySelector('#albumList');
