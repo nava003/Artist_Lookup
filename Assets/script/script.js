@@ -14,9 +14,32 @@ var artistName;
 var lastFmURL = "http://ws.audioscrobbler.com/2.0";
 var lastFMapiKeyCode = "22ab40738b7e4b7cc147c18a2e2cd8ab";
 
-function performSearch() {
-    // WIP GIPHY API
-}
+//////////////////////////////////////////////////////////////////////////////////////////////
+// GIPHY API
+var apiKey = 'OEa74blchPqNymU3Kxl9opwU0nBO8oGP';
+var searchQuery = 'Cher'; // Replaces with the word or phrase you want to search for
+
+var apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&rating=pg&q=Cher&limit=1`;
+
+// Fetch the random GIF or sticker from Giphy API
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+    console.log (data)
+// Process the API response
+    var gifUrl = data.data[0].embed_url
+    console.log (gifUrl)
+//Displays the GIF or sticker on your web page
+   var gifElement = document.createElement('img');
+      gifElement.src = gifUrl;
+        document.body.appendChild(gifElement);
+    })
+  .catch (function (error) {
+    // Handle any errors that occur during the API request
+    console.log('Error:', error);
+  });
+//GIPHY API
+//////////////////////////////////////////////////////////////////////////////////
 
 // // // // // // // // // // // // // // // // // // // // // // // //
 // ================ Alex's Last.fm Codework Below ================= //
