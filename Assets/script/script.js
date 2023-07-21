@@ -5,8 +5,6 @@ var artistHeader = document.querySelector('#artistHeader');
 var artistInfo = document.querySelector('#artistInfo');
 var modal = document.getElementById('alertModal');
 var modalText = document.getElementById('alertModal').children[0].children[1];
-
-console.log()
 var span = document.getElementsByClassName("close")[0];
 
 // Global Variables
@@ -30,23 +28,18 @@ function getArtistInfo() {
     fetch(requestArtInfoURL)
         .then(function (response) {
             if (response.ok) {
-                // console.log(response) // temp console log
                 response.json()
                     .then(function (data) {
-                        //console.log(data.artist.bio.content) // temp console log
-
                         displayArtistInfo(data, artistName);
                     });
             } else {
-                // console.log("Error: " + response.statusText);
-                // "Error: " + response.statusText
-                // Place status error inside a msg container/div/element
+                modalText.innerHTML = "";
+                modalText.innerHTML = "Error: " + response.statusText;
             }
         })
         .catch(function (error) {
-            // console.log(error);
-            // "Unable to connect to Last.fm"
-            // Place error message inside a msg container/div/element
+            modalText.innerHTML = "";
+            modalText.innerHTML = "Unable to connect to Last.fm";
         });
 }
 
@@ -57,31 +50,25 @@ function getAlbumList() {
     fetch(requestArtAlbURL)
         .then(function (response) {
             if (response.ok) {
-                // console.log(response) // temp console log
                 response.json()
                     .then(function (data) {
-                        console.log(data) // temp console log
-
                         displayTopAlbums(data, artistName);
                     });
             } else {
-                // console.log("Error: " + response.statusText);
-                // "Error: " + response.statusText
-                // Place status error inside a msg container/div/element
+                modalText.innerHTML = "";
+                modalText.innerHTML = "Error: " + response.statusText;
             }
         })
         .catch(function (error) {
-            // console.log(error);
-            // "Unable to connect to Last.fm"
-            // Place error message inside a msg container/div/element
+            modalText.innerHTML = "";
+            modalText.innerHTML = "Unable to connect to Last.fm";
         })
         ;
 }
 
 function displayTopAlbums(info, artName) {
     if (info.topalbums === null) {
-        // "No Artist was found. Try again."
-        // Place message inside a container/div/element
+        modalText.innerHTML = "No Albums were found. Try again.";
         return;
     }
 
@@ -105,13 +92,10 @@ function displayTopAlbums(info, artName) {
 
 // Function for Last.fm API
 function displayArtistInfo(info, artName) {
-    modalText.innerHTML = ""
     if (info.artist === null) {
-        // "No Artist was found. Try again."
+        modalText.innerHTML = ""
         modalText.innerHTML = "No Artist was found. Try again."
         modalAlert();
-
-        // Place message inside a container/div/element
         return;
     }
 
