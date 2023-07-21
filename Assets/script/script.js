@@ -3,6 +3,9 @@ var searchField = document.getElementById('searchField');
 var searchButton = document.getElementById('search-button');
 var artistHeader = document.querySelector('#artistHeader');
 var artistInfo = document.querySelector('#artistInfo');
+var modal = document.getElementById('alertModal');
+
+var span = document.getElementsByClassName("close")[0];
 
 // Global Variables
 var artistName;
@@ -135,5 +138,19 @@ searchButton.addEventListener("click", function (event) {
     artistName = searchField.value.trim();
     getArtistInfo();
 
-    console.log(artistName);
+    modalAlert();
 })
+
+function modalAlert() {
+    modal.style.display = "block";
+}
+
+span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
