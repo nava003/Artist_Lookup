@@ -3,6 +3,11 @@ var searchField = document.getElementById('searchField');
 var searchButton = document.getElementById('search-button');
 var artistHeader = document.querySelector('#artistHeader');
 var artistInfo = document.querySelector('#artistInfo');
+var modal = document.getElementById('alertModal');
+var modalText = document.getElementById('alertModal').children[0].children[1];
+
+console.log()
+var span = document.getElementsByClassName("close")[0];
 
 // Global Variables
 var artistName;
@@ -100,8 +105,12 @@ function displayTopAlbums(info, artName) {
 
 // Function for Last.fm API
 function displayArtistInfo(info, artName) {
+    modalText.innerHTML = ""
     if (info.artist === null) {
         // "No Artist was found. Try again."
+        modalText.innerHTML = "No Artist was found. Try again."
+        modalAlert();
+
         // Place message inside a container/div/element
         return;
     }
@@ -123,5 +132,18 @@ searchButton.addEventListener("click", function (event) {
     // performSearch();
     getArtistInfo();
     getAlbumList();
-
 })
+
+function modalAlert() {
+    modal.style.display = "block";
+}
+
+span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
