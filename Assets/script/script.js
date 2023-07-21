@@ -107,8 +107,6 @@ function displayTopAlbums(info, artName) {
         var albumIcon = document.createElement('img');
         albumIcon.setAttribute('id', 'img' + (i + 1));
         albumIcon.setAttribute('src', albumImgPath[i].image[largeImgNum]['#text']);
-
-        //console.log(albumImgPath[i].image[largeImgNum]);
         albumList.append(albumIcon);
     }
 }
@@ -135,8 +133,6 @@ searchButton.addEventListener("click", function (event) {
     event.preventDefault();
 
     artistName = searchField.value.trim();
-    //console.log("Button clicked! Artist name is: " + artistName);
-    // performSearch();
     getArtistInfo();
     getAlbumList();
 })
