@@ -12,7 +12,7 @@ var gify = document.getElementById("gifyArea");
 var artistName;
 
 // Last.fm default variables
-var lastFmURL = "http://ws.audioscrobbler.com/2.0";
+var lastFmURL = "https://ws.audioscrobbler.com/2.0";
 var lastFMapiKeyCode = "22ab40738b7e4b7cc147c18a2e2cd8ab";
 
 //////////////////////////////////////////////////////////////////////////////////////////////
