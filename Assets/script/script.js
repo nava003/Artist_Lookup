@@ -25,7 +25,7 @@ function getGify(artistName) {
     `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&rating=pg&q=` +
     searchQuery +
     `&limit=1`;
-  gify;
+  
   // Fetch the random GIF or sticker from Giphy API
   fetch(apiUrl)
     .then((response) => response.json())
@@ -37,10 +37,6 @@ function getGify(artistName) {
       gifElement.src = gifUrl;
       gify.appendChild(gifElement);
     })
-    .catch(function (error) {
-      modalText.innerHTML = "";
-      modalText.innerHTML = "Unable to connect to Gify";
-    });
 }
 //GIPHY API
 //////////////////////////////////////////////////////////////////////////////////
@@ -60,20 +56,26 @@ function getArtistInfo() {
 
   fetch(requestArtInfoURL)
     .then(function (response) {
-      if (response.ok) {
-        response.json().then(function (data) {
-          displayArtistInfo(data, artistName);
-        });
-      } else {
-        modalText.innerHTML = "";
-        modalText.innerHTML = "Error: " + response.statusText;
+      console.log(response)
+      if (!response.ok) {
+        validSearch();
+        return
+      }else {
+        return response.json()
       }
     })
-    .catch(function (error) {
-      modalText.innerHTML = "";
-      modalText.innerHTML = "Unable to connect to Last.fm";
-    });
-}
+    .then(function (data) {
+      console.log(data)
+      if (data.error) {
+            validSearch();
+            return
+      }else {
+            displayArtistInfo(data, artistName);
+            getAlbumList();
+            getGify(artistName);        
+          }
+        })
+  }
 
 // Last.fm artist.getTopAlbums function
 function getAlbumList() {
@@ -91,23 +93,12 @@ function getAlbumList() {
         response.json().then(function (data) {
           displayTopAlbums(data, artistName);
         });
-      } else {
-        modalText.innerHTML = "";
-        modalText.innerHTML = "Error: " + response.statusText;
       }
-    })
-    .catch(function (error) {
-      modalText.innerHTML = "";
-      modalText.innerHTML = "Unable to connect to Last.fm";
+    
     });
 }
 
 function displayTopAlbums(info, artName) {
-  if (info.topalbums === null) {
-    modalText.innerHTML = "No Albums were found. Try again.";
-    return;
-  }
-
   artistHeader.textContent = artName;
 
   var albumList = document.querySelector("#albumList");
@@ -126,12 +117,7 @@ function displayTopAlbums(info, artName) {
 
 // Function for Last.fm API
 function displayArtistInfo(info, artName) {
-  if (info.artist === null) {
-    modalText.innerHTML = "";
-    modalText.innerHTML = "No Artist was found. Try again.";
-    modalAlert();
-    return;
-  }
+
 
   artistHeader.textContent = artName;
 
@@ -144,15 +130,13 @@ function displayArtistInfo(info, artName) {
 searchButton.addEventListener("click", function (event) {
   event.preventDefault();
   artistName = searchField.value.trim();
+  artistInfo.innerHTMl = "";
 if (artistName == "") {
-    modalText.innerHTML = "";
-    modalText.innerHTML = "Please enter an artist name";
-    modalAlert();
+    validSearch()
     return;
 }else {
   getArtistInfo();
-  getAlbumList();
-  getGify(artistName);
+  clearSearch()
 }
 });
 
@@ -169,3 +153,13 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+function clearSearch() {
+  searchField.value = "";
+}
+
+function validSearch() {
+  modalText.innerHTML = "";
+  modalText.innerHTML = "Sorry, please enter a valid search";
+  modalAlert();
+}
