@@ -56,7 +56,6 @@ function getArtistInfo() {
 
   fetch(requestArtInfoURL)
     .then(function (response) {
-      console.log(response)
       if (!response.ok) {
         validSearch();
         return
@@ -65,7 +64,6 @@ function getArtistInfo() {
       }
     })
     .then(function (data) {
-      console.log(data)
       if (data.error) {
             validSearch();
             return
@@ -91,16 +89,14 @@ function getAlbumList() {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          displayTopAlbums(data, artistName);
+          displayTopAlbums(data);
         });
       }
     
     });
 }
 
-function displayTopAlbums(info, artName) {
-  artistHeader.textContent = artName;
-
+function displayTopAlbums(info) {
   var albumList = document.querySelector("#albumList");
   albumList.innerHTML = "";
 
@@ -118,8 +114,6 @@ function displayTopAlbums(info, artName) {
 
 // Function for Last.fm API
 function displayArtistInfo(info, artName) {
-
-
   artistHeader.textContent = artName;
 
   var bioContent = info.artist.bio.content;
