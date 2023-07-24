@@ -110,6 +110,7 @@ function displayTopAlbums(info, artName) {
   for (var i = 0; i < info.topalbums.album.length; i++) {
     var albumIcon = document.createElement("img");
     albumIcon.setAttribute("id", "img" + (i + 1));
+    albumIcon.setAttribute("class", "albumIcon");
     albumIcon.setAttribute("src", albumImgPath[i].image[largeImgNum]["#text"]);
     albumList.append(albumIcon);
   }
