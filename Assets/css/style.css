@@ -86,3 +86,7 @@ header {
   text-decoration: none;
   cursor: pointer;
 }
+
+.albumIcon {
+    margin-bottom: 5px;
+}
