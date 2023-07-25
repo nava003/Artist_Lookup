@@ -64,7 +64,10 @@ function getArtistInfo() {
       }
     })
     .then(function (data) {
-      if (data.error) {
+
+      console.log(data.artist.bio.content)
+      if (data.error || data.artist.bio.content === "") {
+
             validSearch();
             return
       }else {
