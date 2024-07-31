@@ -15,4 +15,4 @@ Users enter the artist's name into the search field and hit the search button. T
 https://github.com/nava003/Music_App_Project
 
 #### URL
-https://nava003.github.io/Music_App_Project
+https://nava003.github.io/Artist_Lookup/
