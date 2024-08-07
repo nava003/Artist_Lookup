@@ -12,7 +12,7 @@ Users enter the artist's name into the search field and hit the search button. T
 ![Navigation Image](./Assets/images/Music%20Application%20Screenshot.png)
 
 #### Repository
-https://github.com/nava003/Music_App_Project
+https://github.com/nava003/Artist_Lookup
 
 #### URL
 https://nava003.github.io/Artist_Lookup/
